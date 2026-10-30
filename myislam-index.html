@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MyIslam — Your Daily Islamic Companion</title>
+<style>
+:root{--green:#176b45;--gold:#f3e7c4;--ink:#183328;--paper:#f8faf6}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,sans-serif}
+header,main,footer{max-width:1100px;margin:auto;padding:22px}
+header{display:flex;justify-content:space-between;align-items:center;gap:15px}
+.brand{font-size:24px;font-weight:bold;color:var(--green)}select,button{padding:11px 14px;border:0;border-radius:10px;font:inherit}
+select{border:1px solid #d9e3d9;background:white}button{background:var(--green);color:white;cursor:pointer}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:25px;align-items:center;padding-top:55px;padding-bottom:55px}
+h1{font: bold clamp(36px,5vw,58px)/1.12 Georgia,serif;margin:15px 0}
+h1 span{color:var(--green)}p{line-height:1.7;color:#65766b}
+.verse{background:linear-gradient(140deg,#176b45,#2c9162);color:white;border-radius:24px;padding:35px;text-align:center}
+.arabic{font:34px/1.8 Georgia,serif;direction:rtl}.verse p{color:#e5f1e8}
+section{padding:35px 22px}.section-title{text-align:center;font: bold 32px Georgia,serif}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.card{background:white;border:1px solid #e2eae1;border-radius:17px;padding:22px;min-height:145px}
+.card b{font-size:18px}.icon{font-size:25px;color:var(--green)}
+.tools{background:#eef4ed;border-radius:22px}.toolrow{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.count{font-size:40px;font-weight:bold;color:var(--green);margin:12px}
+.times{display:flex;gap:8px;flex-wrap:wrap}.time{background:#f2f6f1;border-radius:10px;padding:12px;text-align:center;flex:1;min-width:65px}
+.note{font-size:12px;color:#987b36}footer{border-top:1px solid #e1e9e0;color:#77877c;font-size:12px}
+@media(max-width:700px){.hero{grid-template-columns:1fr;padding-top:25px}.cards{grid-template-columns:1fr 1fr}.toolrow{grid-template-columns:1fr}}
+@media(max-width:450px){.cards{grid-template-columns:1fr}header{padding:16px}}
+</style>
+</head>
+<body>
+<header><div class="brand">☾ MyIslam</div><select id="language" aria-label="Choose language"><option value="en">English</option><option value="hi">हिन्दी</option><option value="ur">اردو</option><option value="te">తెలుగు</option><option value="ar">العربية</option></select></header>
+<main>
+<div class="hero"><div><p>✦ A LITTLE CLOSER EVERY DAY</p><h1 id="headline">Strengthen your faith,<br><span>one day at a time.</span></h1><p id="intro">A welcoming place for Quran reading, daily duas, prayer-time tools and Islamic learning. Simple to use, wherever you are.</p><button onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">Explore MyIslam ↓</button></div><div class="verse"><div class="arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div><p>In the name of Allah, the Most Merciful, the Especially Merciful</p></div></div>
+<section id="features"><h2 class="section-title">Everything in one peaceful place</h2><div class="cards">
+<div class="card"><div class="icon">۞</div><b>Quran & translations</b><p>Read the Quran and explore trusted translations.</p></div>
+<div class="card"><div class="icon">◷</div><b>Prayer times</b><p>Prayer schedule for your selected city.</p></div>
+<div class="card"><div class="icon">⌖</div><b>Qibla direction</b><p>Find Qibla guidance using your device.</p></div>
+<div class="card"><div class="icon">✿</div><b>Daily duas</b><p>Daily duas with meanings and references.</p></div>
+<div class="card"><div class="icon">☼</div><b>Hadith library</b><p>Hadith with collection names and references.</p></div>
+<div class="card"><div class="icon">◎</div><b>Islamic learning</b><p>Beginner-friendly lessons for everyone.</p></div>
+</div></section>
+<section class="tools"><h2 class="section-title">Small steps, daily habits</h2><div class="toolrow">
+<div class="card"><b>Digital Tasbeeh</b><p>Tap to count your dhikr.</p><div class="count" id="count">0</div><button id="add">+ Count</button> <button id="reset">Reset</button></div>
+<div class="card"><b>Prayer times preview</b><p>Example layout only — these are not today's prayer times.</p><div class="times"><div class="time">Fajr<br>—:—</div><div class="time">Dhuhr<br>—:—</div><div class="time">Asr<br>—:—</div><div class="time">Maghrib<br>—:—</div><div class="time">Isha<br>—:—</div></div><p class="note">Accurate timings will be connected in a later step.</p></div>
+</div></section>
+</main>
+<footer>MyIslam · Your Daily Islamic Companion · Religious content should be verified before publishing.</footer>
+<script>
+let total=0;const display=document.getElementById('count');
+document.getElementById('add').onclick=()=>display.textContent=++total;
+document.getElementById('reset').onclick=()=>{total=0;display.textContent=total};
+const copy={
+en:['Strengthen your faith,<br><span>one day at a time.</span>','A welcoming place for Quran reading, daily duas, prayer-time tools and Islamic learning. Simple to use, wherever you are.'],
+hi:['Apne imaan ko mazboot banayein,<br><span>har din ek qadam.</span>','Quran padhne, rozana duas, namaz ke auqat aur Islami taleem ke liye ek aasaan jagah.'],
+ur:['اپنے ایمان کو مضبوط بنائیں،<br><span>ہر دن ایک قدم۔</span>','قرآن پڑھنے، روزانہ دعاؤں، نماز کے اوقات اور اسلامی تعلیم کے لیے ایک آسان جگہ۔'],
+te:['మీ విశ్వాసాన్ని బలపరచుకోండి,<br><span>ప్రతిరోజూ ఒక అడుగు.</span>','ఖురాన్ పఠనం, రోజువారీ దుఆలు, నమాజ్ సమయాలు మరియు ఇస్లామిక్ అభ్యాసానికి సులభమైన స్థలం.'],
+ar:['قوِّ إيمانك،<br><span>خطوة كل يوم.</span>','مساحة سهلة لقراءة القرآن والأدعية اليومية ومواقيت الصلاة والتعلم الإسلامي.']
+};
+document.getElementById('language').onchange=e=>{let lang=e.target.value;document.documentElement.lang=lang;document.documentElement.dir=['ur','ar'].includes(lang)?'rtl':'ltr';document.getElementById('headline').innerHTML=copy[lang][0];document.getElementById('intro').textContent=copy[lang][1]};
+</script>
+</body></html>
